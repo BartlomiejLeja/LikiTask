@@ -116,7 +116,7 @@ export class FrogLakeComponent implements OnInit {
       this.isFirstSelected = false;
       this.clearLake();
     }
-    else if(this.fieldTo.frog && this.fieldTo.frog.gender !== 'none'){
+    else if(this.fieldTo.frog && this.fieldTo.frog){
       alert('You can t move a frog to another frog');
       this.clearLake();
     } else {
