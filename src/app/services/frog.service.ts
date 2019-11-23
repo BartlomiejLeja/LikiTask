@@ -7,21 +7,23 @@ import { LakeField } from '../model/lake-field';
 export class FrogService {
 
     public checkIfMoveIsPossible(
-            xFrom: number, 
-            yFrom: number, 
-            xTo: number, 
-            yTo: number,
-            gender: string
+            // xFrom: number, 
+            // yFrom: number, 
+            // xTo: number, 
+            // yTo: number,
+            // gender: string
+            fieldFrom: LakeField,
+            fieldTo: LakeField
         ): boolean {
             if(
-                gender === 'male' && 
-                yTo-yFrom<=3 && 
-                xTo-xFrom<=3
+                fieldFrom.frog.gender === 'male' && 
+                fieldTo.y-fieldFrom.y<=3 && 
+                fieldTo.x-fieldFrom.x<=3
             ){
                     return true;
-            }else if (gender === 'female' && 
-                yTo-yFrom<=2 && 
-                xTo-xFrom<=2){
+            }else if (fieldFrom.frog.gender === 'female' && 
+                fieldTo.y-fieldFrom.y<=2 && 
+                fieldTo.x-fieldFrom.x<=2){
                     return true;
             }
             return false; 
@@ -32,7 +34,7 @@ export class FrogService {
         fieldTo: LakeField
     ): boolean{
         if(
-            fieldFrom.frog.gender!=fieldTo.frog.gender &&  
+            fieldFrom.frog.gender !== fieldTo.frog.gender &&  
             Math.abs(fieldTo.y-fieldFrom.y)<=1 && 
             Math.abs(fieldTo.x-fieldFrom.x)<=1 )
         {
@@ -42,25 +44,25 @@ export class FrogService {
         }
     }
 
-    public findFreeField(lake: LakeField[][],fieldFrom: LakeField,number : number)
+    public findFreeField(lake: LakeField[][],fieldFrom: LakeField, iteration: number)
     {
         //TODO handle situation when no free fields
-        if(!lake[fieldFrom.x+number][fieldFrom.y+number].frog)
-            return {x: fieldFrom.x+number, y:fieldFrom.y+number}
-        if(!lake[fieldFrom.x][fieldFrom.y+number].frog)
-            return {x: fieldFrom.x, y:fieldFrom.y+number}
-        if(!lake[fieldFrom.x+number][fieldFrom.y].frog)
-            return {x: fieldFrom.x+number, y:fieldFrom.y} 
-        if(!lake[fieldFrom.x-number][fieldFrom.y-number].frog)
-            return {x: fieldFrom.x-number, y:fieldFrom.y-number}
-        if(!lake[fieldFrom.x][fieldFrom.y-number].frog)
-            return {x: fieldFrom.x, y:fieldFrom.y-number}
-        if(!lake[fieldFrom.x-number][fieldFrom.y].frog)
-            return {x: fieldFrom.x-number, y:fieldFrom.y}  
-        if(!lake[fieldFrom.x-number][fieldFrom.y+number].frog)
-            return {x: fieldFrom.x-number, y:fieldFrom.y+number}  
-        if(!lake[fieldFrom.x+number][fieldFrom.y-number].frog)
-            return {x: fieldFrom.x+number, y:fieldFrom.y-number}  
-        return this.findFreeField(lake,fieldFrom,number+1)
+        if(!lake[fieldFrom.x+iteration][fieldFrom.y+iteration].frog)
+            return {x: fieldFrom.x+iteration, y:fieldFrom.y+iteration};
+        if(!lake[fieldFrom.x][fieldFrom.y+iteration].frog)
+            return {x: fieldFrom.x, y:fieldFrom.y+iteration};
+        if(!lake[fieldFrom.x+iteration][fieldFrom.y].frog)
+            return {x: fieldFrom.x+iteration, y:fieldFrom.y} 
+        if(!lake[fieldFrom.x-iteration][fieldFrom.y-iteration].frog)
+            return {x: fieldFrom.x-iteration, y:fieldFrom.y-iteration};
+        if(!lake[fieldFrom.x][fieldFrom.y-iteration].frog)
+            return {x: fieldFrom.x, y:fieldFrom.y-iteration};
+        if(!lake[fieldFrom.x-iteration][fieldFrom.y].frog)
+            return {x: fieldFrom.x-iteration, y:fieldFrom.y}; 
+        if(!lake[fieldFrom.x-iteration][fieldFrom.y+iteration].frog)
+            return { x: fieldFrom.x-iteration, y:fieldFrom.y+iteration };  
+        if(!lake[fieldFrom.x+iteration][fieldFrom.y-iteration].frog)
+            return { x: fieldFrom.x+iteration, y:fieldFrom.y-iteration };  
+        return this.findFreeField(lake,fieldFrom,iteration+1);
     }
 }

@@ -9,20 +9,9 @@ import { Frog } from '../model/frog';
   styleUrls: ['./frog-lake.component.css']
 })
 export class FrogLakeComponent implements OnInit {
-
-  
-  private isFirstSelected = false;
-  private fieldFrom: LakeField;
-  private fieldTo: LakeField;
-
-  constructor(private frogService: FrogService) { }
-
-  ngOnInit() {
-  }
- 
   public lake = [
     [
-      new LakeField(0,0, new Frog('male',['tall','fat'])),
+      new LakeField(0,0, new Frog( 'male' ,[ 'tall' , 'fat' ])),
       new LakeField(0,1,new Frog('female',['short','slim'])),
       new LakeField(0,2,),
       new LakeField(0,3,),
@@ -95,6 +84,15 @@ export class FrogLakeComponent implements OnInit {
     ],
   ];
 
+  private isFirstSelected = false;
+  private fieldFrom: LakeField;
+  private fieldTo: LakeField;
+
+  constructor(private frogService: FrogService) { }
+
+  ngOnInit() {
+  }
+ 
  public handleClick($event, lakeField: LakeField): void{
     this.lake[lakeField.x][lakeField.y].checked = $event.currentTarget.checked;
     if($event.currentTarget.checked && !this.isFirstSelected && lakeField.frog.gender !== 'none'){
@@ -112,17 +110,17 @@ export class FrogLakeComponent implements OnInit {
   }
 
   public jump(): void{
-    if(this.frogService.checkIfMoveIsPossible(this.fieldFrom.x,this.fieldFrom.y, this.fieldTo.x,this.fieldTo.y,this.fieldFrom.frog.gender) && this.fieldTo.frog === undefined){
+    if(this.frogService.checkIfMoveIsPossible(this.fieldFrom,this.fieldTo) && this.fieldTo.frog === undefined){
       this.lake[this.fieldTo.x][this.fieldTo.y].frog = this.fieldFrom.frog;
       this.lake[this.fieldFrom.x][this.fieldFrom.y].frog = null;
       this.isFirstSelected = false;
       this.clearLake();
     }
     else if(this.fieldTo.frog && this.fieldTo.frog.gender !== 'none'){
-      alert("You can't move a frog to another frog");
+      alert('You can t move a frog to another frog');
       this.clearLake();
     } else {
-      alert("You can't move a frog so far");
+      alert('You can t move a frog so far');
       this.clearLake();
     }
   }
