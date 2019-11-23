@@ -1,19 +1,19 @@
+import { Frog } from './frog';
+
 export class LakeField {
-    public characteristics: [];
     public x: number;
     public y: number;
-    public gender: string;
     public checked: boolean;
+    public frog?: Frog;
 
     constructor(private xCordinate: number,
                 private yCordinate: number,
-                private frogGender: string,
+                private frogInput?: Frog,
                 private checkedInput = false,
-                private frogcharacteristics?: []){
+            ){
         this.x = xCordinate;
         this.y = yCordinate;
-        this.gender = frogGender;
-        this.characteristics = frogcharacteristics;
+        this.frog = frogInput;
         this.checked = checkedInput;
     }
 }

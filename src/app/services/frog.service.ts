@@ -32,7 +32,7 @@ export class FrogService {
         fieldTo: LakeField
     ): boolean{
         if(
-            fieldFrom.gender!=fieldTo.gender &&  
+            fieldFrom.frog.gender!=fieldTo.frog.gender &&  
             Math.abs(fieldTo.y-fieldFrom.y)<=1 && 
             Math.abs(fieldTo.x-fieldFrom.x)<=1 )
         {
@@ -42,32 +42,24 @@ export class FrogService {
         }
     }
 
-    public chceckIfFieldIsEmpty( fieldFrom: LakeField,
-        fieldTo: LakeField) {
-            if(fieldFrom.gender==='male'){
-
-            }else if (fieldTo.gender ==='male'){
-
-            }
-        }
-
     public findFreeField(lake: LakeField[][],fieldFrom: LakeField,number : number)
     {
-        if(lake[fieldFrom.x+number][fieldFrom.y+number].gender === 'none')
+        //TODO handle situation when no free fields
+        if(!lake[fieldFrom.x+number][fieldFrom.y+number].frog)
             return {x: fieldFrom.x+number, y:fieldFrom.y+number}
-        if(lake[fieldFrom.x][fieldFrom.y+number].gender === 'none')
+        if(!lake[fieldFrom.x][fieldFrom.y+number].frog)
             return {x: fieldFrom.x, y:fieldFrom.y+number}
-        if(lake[fieldFrom.x+number][fieldFrom.y].gender === 'none')
+        if(!lake[fieldFrom.x+number][fieldFrom.y].frog)
             return {x: fieldFrom.x+number, y:fieldFrom.y} 
-        if(lake[fieldFrom.x-number][fieldFrom.y-number].gender === 'none')
+        if(!lake[fieldFrom.x-number][fieldFrom.y-number].frog)
             return {x: fieldFrom.x-number, y:fieldFrom.y-number}
-        if(lake[fieldFrom.x][fieldFrom.y-number].gender === 'none')
+        if(!lake[fieldFrom.x][fieldFrom.y-number].frog)
             return {x: fieldFrom.x, y:fieldFrom.y-number}
-        if(lake[fieldFrom.x-number][fieldFrom.y].gender === 'none')
+        if(!lake[fieldFrom.x-number][fieldFrom.y].frog)
             return {x: fieldFrom.x-number, y:fieldFrom.y}  
-        if(lake[fieldFrom.x-number][fieldFrom.y+number].gender === 'none')
+        if(!lake[fieldFrom.x-number][fieldFrom.y+number].frog)
             return {x: fieldFrom.x-number, y:fieldFrom.y+number}  
-        if(lake[fieldFrom.x+number][fieldFrom.y-number].gender === 'none')
+        if(!lake[fieldFrom.x+number][fieldFrom.y-number].frog)
             return {x: fieldFrom.x+number, y:fieldFrom.y-number}  
         return this.findFreeField(lake,fieldFrom,number+1)
     }

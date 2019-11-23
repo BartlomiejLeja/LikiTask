@@ -26,60 +26,60 @@
     <tbody>
       <tr>
         <td *ngFor="let field of lake[0]">
-            <label *ngIf = "field.gender==='male' || field.gender==='female' " [ngClass]="(field.gender==='male')? 'frog male': 'frog female'">
+            <label *ngIf = "field.frog && field.frog.gender==='male' || field.frog && field.frog.gender==='female' " [ngClass]="(field.frog.gender==='male')? 'frog male': 'frog female'">
                 <input  [checked]="field.checked" type="checkbox"  (change)="handleClick($event,field)">
             </label>
-            <label *ngIf = "field.gender==='none'">
+            <label *ngIf = "!field.frog">
                 <input  [checked]="field.checked" type="checkbox"  (change)="handleClick($event,field)">
             </label>
         </td>
       </tr>
       <tr>
         <td  *ngFor="let field of lake[1]">
-             <label *ngIf = "field.gender==='male' || field.gender==='female' " [ngClass]="(field.gender==='male')? 'frog male': 'frog female'">
+             <label *ngIf = "field.frog && field.frog.gender==='male' || field.frog && field.frog.gender==='female' " [ngClass]="(field.frog.gender==='male')? 'frog male': 'frog female'">
                 <input [checked]="field.checked" type="checkbox"  (change)="handleClick($event,field)">
             </label>
-            <label *ngIf = "field.gender==='none'">
+            <label *ngIf = "!field.frog">
                 <input [checked]="field.checked" type="checkbox"  (change)="handleClick($event,field)">
             </label>
         </td>
       </tr>
       <tr>
         <td  *ngFor="let field of lake[2]">
-             <label *ngIf = "field.gender==='male' || field.gender==='female' " [ngClass]="(field.gender==='male')? 'frog male': 'frog female'">
+                <label *ngIf = "field.frog && field.frog.gender==='male' || field.frog && field.frog.gender==='female' " [ngClass]="(field.frog.gender==='male')? 'frog male': 'frog female'">
                 <input [checked]="field.checked" type="checkbox"  (change)="handleClick($event,field)">
             </label>
-            <label *ngIf = "field.gender==='none'">
+            <label *ngIf = "!field.frog">
                 <input [checked]="field.checked" type="checkbox"  (change)="handleClick($event,field)">
             </label>
         </td>
       </tr>
       <tr>
         <td  *ngFor="let field of lake[3]">
-             <label *ngIf = "field.gender==='male' || field.gender==='female' " [ngClass]="(field.gender==='male')? 'frog male': 'frog female'">
+                <label *ngIf = "field.frog && field.frog.gender==='male' || field.frog && field.frog.gender==='female' " [ngClass]="(field.frog.gender==='male')? 'frog male': 'frog female'">
                 <input [checked]="field.checked" type="checkbox" (change)="handleClick($event,field)">
             </label>
-            <label *ngIf = "field.gender==='none'">
+            <label *ngIf = "!field.frog">
                 <input [checked]="field.checked" type="checkbox"  (change)="handleClick($event,field)">
             </label>
           </td>
       </tr>
       <tr>
         <td  *ngFor="let field of lake[4]">
-              <label *ngIf = "field.gender==='male' || field.gender==='female' " [ngClass]="(field.gender==='male')? 'frog male': 'frog female'">
+                <label *ngIf = "field.frog && field.frog.gender==='male' || field.frog && field.frog.gender==='female' " [ngClass]="(field.frog.gender==='male')? 'frog male': 'frog female'">
                 <input [checked]="field.checked" type="checkbox"  (change)="handleClick($event,field)">
             </label>
-            <label *ngIf = "field.gender==='none'">
+            <label *ngIf = "!field.frog">
                 <input [checked]="field.checked" type="checkbox"  (change)="handleClick($event,field)">
             </label>
           </td>
       </tr>
       <tr>
         <td *ngFor="let field of lake[5]">
-            <label *ngIf = "field.gender==='male' || field.gender==='female' " [ngClass]="(field.gender==='male')? 'frog male': 'frog female'">
+                <label *ngIf = "field.frog && field.frog.gender==='male' || field.frog && field.frog.gender==='female' " [ngClass]="(field.frog.gender==='male')? 'frog male': 'frog female'">
                 <input [checked]="field.checked" type="checkbox" (change)="handleClick($event,field)">
             </label>
-            <label *ngIf = "field.gender==='none'">
+            <label *ngIf = "!field.frog">
                 <input [checked]="field.checked" type="checkbox" (change)="handleClick($event,field)">
             </label>
           </td>
@@ -101,7 +101,7 @@
     </ul>
   
     <h3>Actions</h3>
-    <button type="button" id="jump" (click)="jumup()">Jump</button>
+    <button type="button" id="jump" (click)="jump()">Jump</button>
     <button type="button" id="reproduce" (click)="reproduce()">Reproduce</button>
   </div>
 
