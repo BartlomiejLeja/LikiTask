@@ -95,7 +95,7 @@ export class FrogLakeComponent implements OnInit {
  
  public handleClick($event, lakeField: LakeField): void{
     this.lake[lakeField.x][lakeField.y].checked = $event.currentTarget.checked;
-    if($event.currentTarget.checked && !this.isFirstSelected && lakeField.frog.gender !== 'none'){
+    if($event.currentTarget.checked && !this.isFirstSelected && lakeField.frog){
       this.fieldFrom = new LakeField(lakeField.x,lakeField.y, lakeField.frog);
       this.isFirstSelected = true;
     }else if ($event.currentTarget.checked && this.isFirstSelected) {

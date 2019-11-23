@@ -7,11 +7,6 @@ import { LakeField } from '../model/lake-field';
 export class FrogService {
 
     public checkIfMoveIsPossible(
-            // xFrom: number, 
-            // yFrom: number, 
-            // xTo: number, 
-            // yTo: number,
-            // gender: string
             fieldFrom: LakeField,
             fieldTo: LakeField
         ): boolean {
